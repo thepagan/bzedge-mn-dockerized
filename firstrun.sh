@@ -1,4 +1,6 @@
 #!/bin/bash
+CONFIGURE_FLAGS="--disable-tests --disable-bench" HOST=aarch64-linux-gnu BZE_TOOLCHAIN=GCC ./$HOME/bzedge/zcutil/build.sh
+./$HOME/bzedge/zcutil/fetch-params.sh
 sudo touch /etc/systemd/system/bzedged.service
 sudo chown bzedge:bzedge /etc/systemd/system/bzedged.service
 ls -al /etc/systemd/system
