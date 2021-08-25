@@ -37,7 +37,6 @@ IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 echo "externalip=[$IP]:1990" >> ~/.bzedge/bzedge.conf
 echo "masternodeaddr=[$IP]:1990" >> ~/.bzedge/bzedge.conf 
 echo "rpcbind=[$IP]:1980" >> ~/.bzedge/bzedge.conf
-echo "masternode=1" >> ~/.bzedge/bzedge.conf
 echo "rpcuser="$(pwgen -n 8 1) >> ~/.bzedge/bzedge.conf
 echo "rpcpassword="$(pwgen -n 20 1) >> ~/.bzedge/bzedge.conf
 sudo systemctl start bzedged.service
@@ -45,6 +44,7 @@ echo "Starting the BZEdge daemon for the first time..."
 sleep 5
 MNKEY=$(~/bzedge/src/bzedge-cli masternode genkey)
 echo "masternodeprivkey=$MNKEY" >> ~/.bzedge/bzedge.conf
+echo "masternode=1" >> ~/.bzedge/bzedge.conf
 echo "Enter Transaction ID:"
 read TXID
 echo "Enter Output Index:"
