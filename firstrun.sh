@@ -27,6 +27,7 @@ sudo chown root:root /etc/systemd/system/bzedged.service
 sudo systemctl daemon-reload
 sudo systemctl enable bzedged.service > /dev/null 2>&1
 sleep 4
+curl -s "https://blocks.getbze.com/ext/connections" | jq -r --arg prefix "addnode=" '.[] | .[] | $prefix + .address' >> ~/.bzedge/bzedge.conf
 echo "rpcport=1980" >> ~/.bzedge/bzedge.conf 
 echo "daemon=1" >> ~/.bzedge/bzedge.conf 
 echo "txindex=1" >> ~/.bzedge/bzedge.conf 
